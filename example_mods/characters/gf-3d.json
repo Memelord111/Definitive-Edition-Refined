@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-126,
+				-54
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "THGIR"
+		},
+		{
+			"offsets": [
+				-126,
+				-54
+			],
+			"indices": [
+				30,
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "TFEL"
+		},
+		{
+			"offsets": [
+				-126,
+				-54
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "cheer",
+			"loop": false,
+			"name": "YEAH"
+		},
+		{
+			"offsets": [
+				-126,
+				-54
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			],
+			"fps": 24,
+			"anim": "sad",
+			"loop": false,
+			"name": "skill_issue"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/GF-3d",
+	"position": [
+		50,
+		-30
+	],
+	"healthicon": "gf-3d",
+	"flip_x": false,
+	"healthbar_colors": [
+		165,
+		0,
+		77
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

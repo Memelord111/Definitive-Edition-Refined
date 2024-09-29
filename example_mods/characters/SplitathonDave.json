@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-13,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "waiting",
+			"indices": [],
+			"name": "waiting"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle0"
+		},
+		{
+			"offsets": [
+				-17,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "bruh",
+			"indices": [],
+			"name": "bruh"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "happy",
+			"indices": [],
+			"name": "happy"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				54,
+				1
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				53,
+				-12
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				11,
+				-4
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				23,
+				11
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Splitathon_Dave",
+	"position": [
+		-50,
+		90
+	],
+	"healthicon": "dave-annoyed",
+	"flip_x": false,
+	"healthbar_colors": [
+		60,
+		60,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

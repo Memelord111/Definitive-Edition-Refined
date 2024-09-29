@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bambi split.png">
+<SubTexture name="bambi split upset0000" x="0" y="0" width="231" height="265" frameX="0" frameY="0" frameWidth="231" frameHeight="265" />
+<SubTexture name="bambi split confused0000" x="231" y="0" width="231" height="265" frameX="0" frameY="0" frameWidth="231" frameHeight="265" />
+<SubTexture name="bambi split unamused0000" x="462" y="0" width="231" height="265" frameX="0" frameY="0" frameWidth="231" frameHeight="265" />
+<SubTexture name="bambi split angry0000" x="0" y="265" width="231" height="265" frameX="0" frameY="0" frameWidth="231" frameHeight="265" />
+<SubTexture name="bambi split talk0000" x="231" y="265" width="231" height="265" frameX="0" frameY="0" frameWidth="231" frameHeight="265" />
+</TextureAtlas>

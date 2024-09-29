@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Recurser-3D.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DOWN0000" x="0" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0001" x="1203" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0002" x="2406" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0003" x="3609" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0004" x="4812" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0005" x="4812" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0006" x="6015" y="0" width="1203" height="1175"/>
+	<SubTexture name="DOWN0007" x="6015" y="0" width="1203" height="1175"/>
+	<SubTexture name="IDLE0000" x="0" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0001" x="1203" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0002" x="2406" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0003" x="3609" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0004" x="4812" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0005" x="6015" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0006" x="0" y="2350" width="1203" height="1175"/>
+	<SubTexture name="IDLE0007" x="1203" y="2350" width="1203" height="1175"/>
+	<SubTexture name="IDLE0008" x="1203" y="2350" width="1203" height="1175"/>
+	<SubTexture name="IDLE0009" x="2406" y="2350" width="1203" height="1175"/>
+	<SubTexture name="IDLE0010" x="1203" y="2350" width="1203" height="1175"/>
+	<SubTexture name="IDLE0002.png" x="2406" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0003.png" x="3609" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0004.png" x="4812" y="1175" width="1203" height="1175"/>
+	<SubTexture name="IDLE0005.png" x="6015" y="1175" width="1203" height="1175"/>
+	<SubTexture name="LEFT0000" x="3609" y="2350" width="1203" height="1175"/>
+	<SubTexture name="LEFT0001" x="4812" y="2350" width="1203" height="1175"/>
+	<SubTexture name="LEFT0002" x="6015" y="2350" width="1203" height="1175"/>
+	<SubTexture name="LEFT0003" x="0" y="3525" width="1203" height="1175"/>
+	<SubTexture name="LEFT0004" x="1203" y="3525" width="1203" height="1175"/>
+	<SubTexture name="LEFT0005" x="1203" y="3525" width="1203" height="1175"/>
+	<SubTexture name="LEFT0006" x="2406" y="3525" width="1203" height="1175"/>
+	<SubTexture name="LEFT0007" x="2406" y="3525" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0000" x="3609" y="3525" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0001" x="4812" y="3525" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0002" x="6015" y="3525" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0003" x="0" y="4700" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0004" x="1203" y="4700" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0005" x="1203" y="4700" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0006" x="2406" y="4700" width="1203" height="1175"/>
+	<SubTexture name="RIGHT0007" x="2406" y="4700" width="1203" height="1175"/>
+	<SubTexture name="UP0000" x="3609" y="4700" width="1203" height="1175"/>
+	<SubTexture name="UP0001" x="4812" y="4700" width="1203" height="1175"/>
+	<SubTexture name="UP0002" x="6015" y="4700" width="1203" height="1175"/>
+	<SubTexture name="UP0003" x="0" y="5875" width="1203" height="1175"/>
+	<SubTexture name="UP0004" x="1203" y="5875" width="1203" height="1175"/>
+	<SubTexture name="UP0005" x="1203" y="5875" width="1203" height="1175"/>
+	<SubTexture name="UP0006" x="2406" y="5875" width="1203" height="1175"/>
+	<SubTexture name="UP0007" x="2406" y="5875" width="1203" height="1175"/>
+	<SubTexture name="SPRITES MADE BY MR BORING" x="2406" y="5875" width="1203" height="1175"/>
+</TextureAtlas>

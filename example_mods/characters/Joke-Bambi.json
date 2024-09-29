@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				74,
+				-29
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				17,
+				-62
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				24,
+				16
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-15,
+				-22
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				44,
+				27
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "Hey!",
+			"loop": true,
+			"name": "fuck"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Joke-Bambi",
+	"position": [
+		50,
+		321
+	],
+	"healthicon": "jokebamber",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		196,
+		0
+	],
+	"camera_position": [
+		-49,
+		47
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

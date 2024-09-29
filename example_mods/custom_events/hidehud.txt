@@ -1,0 +1,4 @@
+hp bar is gone
+
+value 1: opacity
+value 2: speed

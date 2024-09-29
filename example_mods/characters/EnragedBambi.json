@@ -1,0 +1,166 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				60,
+				0
+			],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "idle10",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				60,
+				0
+			],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "idle20",
+			"indices": []
+		},
+		{
+			"offsets": [
+				89,
+				-6
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
+		},
+		{
+			"offsets": [
+				37,
+				-34
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down0"
+		},
+		{
+			"offsets": [
+				73,
+				68
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up0"
+		},
+		{
+			"offsets": [
+				181,
+				-12
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left0"
+		},
+		{
+			"offsets": [
+				82,
+				18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "alt right0"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				107,
+				69
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "alt up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				14,
+				-34
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "alt down0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				182,
+				-12
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "alt left0"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				108,
+				40
+			],
+			"anim": "scream",
+			"fps": 24,
+			"name": "screamer0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				110,
+				75
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "pre-attack",
+			"loop": false,
+			"name": "phone0"
+		},
+		{
+			"offsets": [
+				192,
+				140
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "attack",
+			"loop": false,
+			"name": "throw0"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/Enraged_Bambi",
+	"position": [
+		27,
+		337
+	],
+	"healthicon": "Enraged_Bambi",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		0,
+		20
+	],
+	"camera_position": [
+		-12,
+		29
+	],
+	"sing_duration": 40,
+	"scale": 1
+}
