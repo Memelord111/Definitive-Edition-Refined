@@ -1,8 +1,6 @@
 package;
 
-#if desktop
 import Discord.DiscordClient;
-#end
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -39,7 +37,6 @@ class CreditsState extends MusicBeatState
 
 	override function create()
 	{
-		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
@@ -81,6 +78,11 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['Redifined Team'],
+			['Puns4Pain',		'Puns4Pain',		'Main Dev, charted and ported most of the songs',					'https://www.youtube.com/@Puns4Pain/featured',	'A6ADD7'],
+			['Memelord',		'Memelord',			'Co-Director, 2nd Charter And Source Coder',						'https://www.youtube.com/@memelord111alt',	'3890F2'],
+			['Jumpman872',		'Jumpman872',		'Main artist, with a pretty nice artstyle',							'https://www.youtube.com/@Jumpman872/videos',	'1E8200'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
