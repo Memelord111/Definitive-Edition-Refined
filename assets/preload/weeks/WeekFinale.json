@@ -1,24 +1,24 @@
 {
-	"storyName": "Dave's Funkin Class",
+	"storyName": "The Finale",
 	"difficulties": "hard",
 	"hideFreeplay": false,
-	"weekBackground": "Refresher",
-	"weekBefore": "tutorial",
+	"weekBackground": "finale",
+	"weekBefore": "TristanWeek",
 	"freeplayColor": [
-		0,
-		0,
-		253
+		87,
+		82,
+		114
 	],
 	"startUnlocked": true,
 	"hideStoryMode": false,
 	"songs": [
 		[
-			"Warmup",
-			"dave",
+			"splitathon",
+			"marathon1",
 			[
-				0,
-				100,
-				255
+				87,
+				255,
+				194
 			]
 		]
 	],
@@ -28,5 +28,5 @@
 		""
 	],
 	"hiddenUntilUnlocked": false,
-	"weekName": "RefresherWeek"
+	"weekName": "heeeeeee"
 }
