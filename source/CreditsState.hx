@@ -1,6 +1,7 @@
 package;
-
+#if desktop
 import Discord.DiscordClient;
+#end
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -38,9 +39,10 @@ class CreditsState extends MusicBeatState
 	override function create()
 	{
 		// Updating Discord Rich Presence
+		#if desktop
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-
+		
 		persistentUpdate = true;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		add(bg);
