@@ -3,7 +3,6 @@ package;
 import flixel.FlxSprite;
 import openfl.utils.Assets as OpenFlAssets;
 
-
 using StringTools;
 
 class HealthIcon extends FlxSprite
@@ -27,7 +26,7 @@ class HealthIcon extends FlxSprite
 		super.update(elapsed);
 
 		if (sprTracker != null)
-			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
+			setPosition(sprTracker.x + sprTracker.width + 12, sprTracker.y - 30);
 	}
 
 	public function swapOldIcon() {
@@ -54,7 +53,7 @@ class HealthIcon extends FlxSprite
 			this.char = char;
 
 			antialiasing = ClientPrefs.globalAntialiasing;
-			if(char.endsWith('-pixel') || char.endsWith('-3d') ||char.contains('expunged')) {
+			if(char.endsWith('-pixel')) {
 				antialiasing = false;
 			}
 		}
