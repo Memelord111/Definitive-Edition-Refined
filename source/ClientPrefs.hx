@@ -21,19 +21,24 @@ class ClientPrefs {
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
+	public static var showNotes:Bool = true;
 	public static var noteOffset:Int = 0;
 	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 	public static var ghostTapping:Bool = true;
+	public static var songPercentage:Bool = true;
+	public static var percentDecimals:Int = 2;
+	public static var iconBounceType:String = 'Golden Apple';
 	public static var timeBarType:String = 'Time Left';
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
-	public static var healthBarAlpha:Float = 0.95;
+	public static var healthBarAlpha:Float = 1;
+	public static var laneUnderlayAlpha:Float = 1;
+	public static var laneUnderlay:Bool = true;
 	public static var controllerMode:Bool = false;
 	public static var hitsoundVolume:Float = 0;
 	public static var pauseMusic:String = 'Tea Time';
-	public static var checkForUpdates:Bool = false;
+	public static var checkForUpdates:Bool = true;
 	public static var comboStacking = true;
-	public static var iconBounceType:String = 'D&B';
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -109,6 +114,10 @@ class ClientPrefs {
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
+		FlxG.save.data.showNotes = showNotes;
+		FlxG.save.data.songPercentage = songPercentage;
+		FlxG.save.data.percentDecimals = percentDecimals;
+		FlxG.save.data.iconBounceType = iconBounceType;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.ghostTapping = ghostTapping;
@@ -116,10 +125,11 @@ class ClientPrefs {
 		FlxG.save.data.scoreZoom = scoreZoom;
 		FlxG.save.data.noReset = noReset;
 		FlxG.save.data.healthBarAlpha = healthBarAlpha;
+		FlxG.save.data.laneUnderlayAlpha = laneUnderlayAlpha;
+		FlxG.save.data.laneUnderlay = laneUnderlay;
 		FlxG.save.data.comboOffset = comboOffset;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
-		FlxG.save.data.iconBounceType = iconBounceType;
 
 		FlxG.save.data.ratingOffset = ratingOffset;
 		FlxG.save.data.sickWindow = sickWindow;
@@ -132,6 +142,7 @@ class ClientPrefs {
 		FlxG.save.data.pauseMusic = pauseMusic;
 		FlxG.save.data.checkForUpdates = checkForUpdates;
 		FlxG.save.data.comboStacking = comboStacking;
+		var songPercentThing:Float = 0;
 	
 		FlxG.save.flush();
 
@@ -192,6 +203,9 @@ class ClientPrefs {
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
 		}
+		if(FlxG.save.data.showNotes != null) {
+			showNotes = FlxG.save.data.showNotes;
+		}
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;
 		}
@@ -207,6 +221,15 @@ class ClientPrefs {
 		if(FlxG.save.data.timeBarType != null) {
 			timeBarType = FlxG.save.data.timeBarType;
 		}
+		if(FlxG.save.data.iconBounceType != null) {
+			iconBounceType = FlxG.save.data.iconBounceType;
+		}
+		if(FlxG.save.data.percentDecimals != null) {
+			percentDecimals = FlxG.save.data.percentDecimals;
+		}
+		if(FlxG.save.data.songPercentage != null) {
+			songPercentage = FlxG.save.data.songPercentage;
+		}
 		if(FlxG.save.data.scoreZoom != null) {
 			scoreZoom = FlxG.save.data.scoreZoom;
 		}
@@ -216,11 +239,14 @@ class ClientPrefs {
 		if(FlxG.save.data.healthBarAlpha != null) {
 			healthBarAlpha = FlxG.save.data.healthBarAlpha;
 		}
+		if(FlxG.save.data.laneUnderlay != null) {
+			laneUnderlay = FlxG.save.data.laneUnderlay;
+		}
+		if(FlxG.save.data.laneUnderlayAlpha != null) {
+			laneUnderlayAlpha = FlxG.save.data.laneUnderlayAlpha;
+		}
 		if(FlxG.save.data.comboOffset != null) {
 			comboOffset = FlxG.save.data.comboOffset;
-		}
-		if(FlxG.save.data.iconBounceType != null) {
-		iconBounceType = FlxG.save.data.iconBounceType;
 		}
 		
 		if(FlxG.save.data.ratingOffset != null) {
