@@ -1,0 +1,7 @@
+Bluebird's camera lock system
+
+<Value1 : X>
+type X number here
+
+<Value2 : Y>
+type Y number here

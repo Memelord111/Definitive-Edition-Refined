@@ -56,6 +56,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Icon Bounce:',
+			"Which icon bounce would you like?",
+			'iconBounceType',
+			'string',
+			'Golden Apple',
+			['Golden Apple', 'Dave and Bambi', 'Old Psych', 'New Psych', 'VS Steve']);
+		addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',
@@ -70,6 +78,29 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Show Song Percentage',
+		"If checked, you can see text displaying how much\nof the song you've completed.",
+		'songPercentage',
+		'bool',
+		true);
+	addOption(option);
+	var option:Option = new Option('% Decimals: ',
+		"The amount of decimals you want for your Song Percentage. (0 means no decimals)",
+		'percentDecimals',
+		'int',
+		2);
+	addOption(option);
+	option.minValue = 0;
+	option.maxValue = 15;
+	option.displayFormat = '%v Decimals';
+
+		var option:Option = new Option('Show Notes',
+			"If unchecked, the notes will be invisible. /nYou can still play them though!",
+			'showNotes',
+			'bool',
+			true);
+		addOption(option);
+		
 		var option:Option = new Option('Score Text Zoom on Hit',
 			"If unchecked, disables the Score text zooming\neverytime you hit a note.",
 			'scoreZoom',
@@ -80,6 +111,24 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Health Bar Transparency',
 			'How much transparent should the health bar and icons be.',
 			'healthBarAlpha',
+			'percent',
+			1);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0.0;
+		option.maxValue = 1;
+		option.changeValue = 0.1;
+		option.decimals = 1;
+		addOption(option);
+
+		var option:Option = new Option('Lane Underlay',
+			"If checked, a black line will appear behind the notes, making them easier/n to read.",
+			'laneUnderlay',
+			'bool',
+			false);
+		addOption(option);
+		var option:Option = new Option('Lane Underlay Transparency',
+			'How transparent do you want the lane underlay to be? (0% = transparent, 100% = fully opaque)',
+			'laneUnderlayAlpha',
 			'percent',
 			1);
 		option.scrollSpeed = 1.6;

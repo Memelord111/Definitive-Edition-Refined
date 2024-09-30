@@ -1,0 +1,32 @@
+{
+	"storyName": "Bambi's Fun Tutorial Song",
+	"difficulties": "hard",
+	"hideFreeplay": false,
+	"weekBackground": "bambi",
+	"freeplayColor": [
+		0,
+		0,
+		253
+	],
+	"weekBefore": "tutorial",
+	"startUnlocked": false,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Warmup-two",
+			"bambi",
+			[
+				0,
+				215,
+				0
+			]
+		]
+	],
+	"hideStoryMode": true,
+	"weekName": "",
+	"hiddenUntilUnlocked": true
+}

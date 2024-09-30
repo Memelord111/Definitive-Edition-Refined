@@ -1,0 +1,238 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				65,
+				77
+			],
+			"anim": "pre-attack",
+			"fps": 30,
+			"name": "splitathon phone",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-8,
+				18
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "attack",
+			"indices": [],
+			"name": "splitathon throw"
+		},
+		{
+			"offsets": [
+				-38,
+				-7
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idiot",
+			"indices": [],
+			"name": "splitathon fucken idiot"
+		},
+		{
+			"offsets": [
+				-25,
+				-23
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "holy",
+			"indices": [],
+			"name": "splitathon holy shit"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-5,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "splitathon idle0",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-33,
+				2
+			],
+			"anim": "corn",
+			"fps": 24,
+			"name": "splitathon corn",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-45,
+				-27
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "splitathon down",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-102,
+				2
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "splitathon right",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				43,
+				-9
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "splitathon left",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-28,
+				21
+			],
+			"anim": "singUP-alt",
+			"fps": 30,
+			"name": "splitathon alt up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-43,
+				-27
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "splitathon down alt",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-37,
+				-8
+			],
+			"anim": "malicious",
+			"fps": 24,
+			"name": "splitathon fucken idiot",
+			"indices": [
+				0,
+				1,
+				2
+			]
+		},
+		{
+			"offsets": [
+				-41,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "SplitathonBambi splitathon confused"
+		},
+		{
+			"offsets": [
+				-29,
+				41
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			],
+			"name": "splitathon up"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				16,
+				26
+			],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "SplitathonBambi splitathon left alt",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-3,
+				32
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "SplitathonBambi splitathon right alt",
+			"indices": [
+				0,
+				0,
+				2,
+				8
+			]
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/SplitathonBambi",
+	"position": [
+		-30,
+		350
+	],
+	"healthicon": "bambi",
+	"flip_x": false,
+	"healthbar_colors": [
+		37,
+		191,
+		55
+	],
+	"camera_position": [
+		140,
+		-100
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

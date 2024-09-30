@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "SplitIdle"
+		},
+		{
+			"offsets": [
+				-17,
+				10
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "scared",
+			"indices": [],
+			"name": "Nervous"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "happy",
+			"indices": [],
+			"name": "Happy"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "what",
+			"indices": [],
+			"name": "Mad"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-12,
+				20
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "SplitUp",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				38,
+				6
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "SplitLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-41,
+				-16
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "SplitRight",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				8,
+				-23
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "SplitDown",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Dave_Splitathonlegacy",
+	"position": [
+		-50,
+		96
+	],
+	"healthicon": "dave-legacy",
+	"flip_x": false,
+	"healthbar_colors": [
+		35,
+		82,
+		206
+	],
+	"camera_position": [
+		20,
+		20
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

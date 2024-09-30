@@ -1,0 +1,56 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				39,
+				11
+			],
+			"anim": "firstDeath",
+			"fps": 14,
+			"name": "OUCH",
+			"indices": []
+		},
+		{
+			"offsets": [
+				39,
+				11
+			],
+			"loop": true,
+			"fps": 12,
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "OW-MY-FUCKING-BRAIN"
+		},
+		{
+			"offsets": [
+				39,
+				11
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "RETRY"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/bf-3d-dead",
+	"position": [
+		-110,
+		130
+	],
+	"healthicon": "bf-3d",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		50,
+		30
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

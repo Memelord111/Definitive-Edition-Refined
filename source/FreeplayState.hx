@@ -4,6 +4,8 @@ package;
 import Discord.DiscordClient;
 #end
 import editors.ChartingState;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -61,7 +63,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In Freeplay", null);
 		#end
 
 		for (i in 0...WeekData.weeksList.length) {
@@ -111,10 +113,11 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(30,(2 * i) + 25, songs[i].songName, true);
 			songText.isMenuItem = true;
-			songText.targetY = i - curSelected;
+			songText.targetY = i;
 			grpSongs.add(songText);
+			
 
 			var maxWidth = 980;
 			if (songText.width > maxWidth)

@@ -1,0 +1,10 @@
+function onBeatHit()
+	precacheImage('dave/Dave_insanity_lol')
+	precacheImage('dave/sky_night')
+	precacheImage('dave/gates')
+	precacheImage('dave/hills')
+	precacheImage('dave/grass')
+	precacheImage('dave/grass bg')
+	precacheImage('dave/land')
+	precacheImage('backgrounds/dave-house/ICANTBELIEVEIHAVETOCLARIFYTHIS')
+end

@@ -1,0 +1,188 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-5,
+				-1
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MRIGHT"
+		},
+		{
+			"offsets": [
+				-6,
+				0
+			],
+			"loop": false,
+			"fps": 14,
+			"anim": "idle",
+			"indices": [],
+			"name": "IDLE"
+		},
+		{
+			"offsets": [
+				-5,
+				1
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MUP"
+		},
+		{
+			"offsets": [
+				-6,
+				-3
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "MDOWN"
+		},
+		{
+			"offsets": [
+				-4,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "MLEFT"
+		},
+		{
+			"offsets": [
+				-7,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "RIGHT"
+		},
+		{
+			"offsets": [
+				-9,
+				-3
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "DOWN"
+		},
+		{
+			"offsets": [
+				-4,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "LEFT"
+		},
+		{
+			"offsets": [
+				-6,
+				0
+			],
+			"loop": false,
+			"fps": 18,
+			"anim": "hey",
+			"indices": [],
+			"name": "HEY"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				1
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-6,
+				0
+			],
+			"anim": "hurt",
+			"fps": 24,
+			"name": "OUCH",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-6,
+				1
+			],
+			"anim": "scared",
+			"fps": 24,
+			"name": "SCARED",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				2
+			],
+			"anim": "pre-attack",
+			"fps": 16,
+			"name": "PRE-ATT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				211,
+				106
+			],
+			"anim": "attack",
+			"fps": 16,
+			"name": "ATTACK",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				7,
+				6
+			],
+			"anim": "dodge",
+			"fps": 16,
+			"name": "DODGE",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/bf_3d",
+	"position": [
+		-190,
+		100
+	],
+	"healthicon": "bf-3d",
+	"flip_x": true,
+	"healthbar_colors": [
+		29,
+		156,
+		189
+	],
+	"camera_position": [
+		0,
+		30
+	],
+	"sing_duration": 4,
+	"scale": 0.98
+}
