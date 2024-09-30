@@ -33,7 +33,7 @@ class ClientPrefs {
 	public static var pauseMusic:String = 'Tea Time';
 	public static var checkForUpdates:Bool = false;
 	public static var comboStacking = true;
-	public static var iconBounceType:Bool = true;
+	public static var iconBounceType:String = 'D&B';
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -119,6 +119,7 @@ class ClientPrefs {
 		FlxG.save.data.comboOffset = comboOffset;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
+		FlxG.save.data.iconBounceType = iconBounceType:
 
 		FlxG.save.data.ratingOffset = ratingOffset;
 		FlxG.save.data.sickWindow = sickWindow;
@@ -217,6 +218,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.comboOffset != null) {
 			comboOffset = FlxG.save.data.comboOffset;
+		}
+		if(FlxG.save.data.iconBounceType != null) {
+		iconBounceType = FlxG.save.data.iconBounceType;
 		}
 		
 		if(FlxG.save.data.ratingOffset != null) {
