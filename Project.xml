@@ -24,7 +24,7 @@
 	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
-	<window if="html5" width="1920" height="1080" />
+	<window if="html5" />
 
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
