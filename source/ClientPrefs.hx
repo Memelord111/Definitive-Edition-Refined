@@ -27,6 +27,7 @@ class ClientPrefs {
 	public static var ghostTapping:Bool = true;
 	public static var songPercentage:Bool = true;
 	public static var percentDecimals:Int = 2;
+	public static var hudType:String = 'Kade Engine';
 	public static var iconBounceType:String = 'Golden Apple';
 	public static var timeBarType:String = 'Time Left';
 	public static var scoreZoom:Bool = true;
@@ -117,6 +118,7 @@ class ClientPrefs {
 		FlxG.save.data.showNotes = showNotes;
 		FlxG.save.data.songPercentage = songPercentage;
 		FlxG.save.data.percentDecimals = percentDecimals;
+		FlxG.save.data.hudType = hudType;
 		FlxG.save.data.iconBounceType = iconBounceType;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
@@ -220,6 +222,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.timeBarType != null) {
 			timeBarType = FlxG.save.data.timeBarType;
+		}
+		if(FlxG.save.data.hudType != null) {
+			hudType = FlxG.save.data.hudType;
 		}
 		if(FlxG.save.data.iconBounceType != null) {
 			iconBounceType = FlxG.save.data.iconBounceType;
