@@ -3109,33 +3109,21 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
 		if (ClientPrefs.iconBounceType == 'Old Psych') {
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		}
-		if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP1.height, 0.9 / playbackRate)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP2.height, 0.9 / playbackRate)));
-		}
-		if (ClientPrefs.iconBounceType == 'New Psych') {
-		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		iconP1.scale.set(mult, mult);
-		iconP1.updateHitbox();
-		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		iconP2.scale.set(mult, mult);
-		iconP2.updateHitbox();
-		}
-		if (ClientPrefs.iconBounceType == 'VS Steve') {
-		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		iconP1.scale.set(mult, mult);
-		iconP1.updateHitbox();
-		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		iconP2.scale.set(mult, mult);
-		iconP2.updateHitbox();
-		}
-		if (ClientPrefs.iconBounceType == 'Golden Apple') {
-		iconP1.centerOffsets();
-		iconP2.centerOffsets();
-		}
+			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+			}
+			if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
+			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP1.height, 0.9 / playbackRate)));
+			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP2.height, 0.9 / playbackRate)));
+			}
+			if (ClientPrefs.iconBounceType == 'New Psych') {
+			var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP1.scale.set(mult, mult);
+			iconP1.updateHitbox();
+			var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP2.scale.set(mult, mult);
+			iconP2.updateHitbox();
+			}
 			iconP1.updateHitbox();
 			iconP2.updateHitbox();
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
@@ -5167,7 +5155,6 @@ class PlayState extends MusicBeatState
 		{
 			gf.dance();
 		}
-		if (curBeat % gfSpeed == 0) {
 		if (curBeat % gfSpeed == 0 && ClientPrefs.iconBounceType == 'Golden Apple') {
 			curBeat % (gfSpeed * 2) == 0 * playbackRate ? {
 			iconP1.scale.set(1.1, 0.8);
