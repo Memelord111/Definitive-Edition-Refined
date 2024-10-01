@@ -55,7 +55,7 @@ import sys.io.File;
 #end
 
 
-@:access(flixel.sound.FlxSound._sound)
+@:access(flixel.system.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
 class ChartingState extends MusicBeatState
@@ -167,6 +167,8 @@ class ChartingState extends MusicBeatState
 	var zoomTxt:FlxText;
 
 	var zoomList:Array<Float> = [
+		0.0625,
+		0.125,
 		0.25,
 		0.5,
 		1,
@@ -177,9 +179,14 @@ class ChartingState extends MusicBeatState
 		8,
 		12,
 		16,
-		24
+		24,
+		32,
+		48,
+		64,
+		128,
+		192
 	];
-	var curZoom:Int = 2;
+	var curZoom:Int = 4;
 
 	private var blockPressWhileTypingOn:Array<FlxUIInputText> = [];
 	private var blockPressWhileTypingOnStepper:Array<FlxUINumericStepper> = [];
@@ -202,7 +209,9 @@ class ChartingState extends MusicBeatState
 		48,
 		64,
 		96,
-		192
+		192,
+		384,
+		768
 	];
 
 
@@ -356,9 +365,11 @@ class ChartingState extends MusicBeatState
 		\nHold Shift to move 4x faster
 		\nHold Control and click on an arrow to select it
 		\nZ/X - Zoom in/out
+		\nC - Draw your charts! Easier charting for your Bambi fansongs lmao
 		\n
 		\nEsc - Test your chart inside Chart Editor
 		\nEnter - Play your chart
+		\nShift + Enter - Play your chart at the current section
 		\nQ/E - Decrease/Increase Note Sustain Length
 		\nSpace - Stop/Resume song";
 
@@ -677,7 +688,7 @@ class ChartingState extends MusicBeatState
 		check_altAnim = new FlxUICheckBox(check_gfSection.x + 120, check_gfSection.y, null, null, "Alt Animation", 100);
 		check_altAnim.checked = _song.notes[curSec].altAnim;
 
-		stepperBeats = new FlxUINumericStepper(10, 100, 1, 4, 1, 6, 2);
+		stepperBeats = new FlxUINumericStepper(10, 100, 1, 4, 1, 8192, 2); //idk why youd need 8k beats in a single section but ok i guess??
 		stepperBeats.value = getSectionBeats();
 		stepperBeats.name = 'section_beats';
 		blockPressWhileTypingOnStepper.push(stepperBeats);
@@ -1323,7 +1334,7 @@ class ChartingState extends MusicBeatState
 		blockPressWhileTypingOnStepper.push(voicesVolume);
 		
 		#if !html5
-		sliderRate = new FlxUISlider(this, 'playbackSpeed', 120, 120, 0.5, 3, 150, null, 5, FlxColor.WHITE, FlxColor.BLACK);
+		sliderRate = new FlxUISlider(this, 'playbackSpeed', 120, 120, 0.25, 4, 150, null, 5, FlxColor.WHITE, FlxColor.BLACK);
 		sliderRate.nameLabel.text = 'Playback Rate';
 		tab_group_chart.add(sliderRate);
 		#end
@@ -1684,6 +1695,9 @@ class ChartingState extends MusicBeatState
 				PlayState.SONG = _song;
 				FlxG.sound.music.stop();
 				if(vocals != null) vocals.stop();
+				if (FlxG.keys.pressed.SHIFT) {
+					PlayState.startOnTime = sectionStartTime();
+				}
 
 				//if(_song.stage == null) _song.stage = stageDropDown.selectedLabel;
 				StageData.loadDirectory(_song);
@@ -1724,6 +1738,14 @@ class ChartingState extends MusicBeatState
 				curZoom++;
 				updateZoom();
 			}
+			if (FlxG.keys.pressed.C && !FlxG.keys.pressed.CONTROL)
+				if (!FlxG.mouse.overlaps(curRenderedNotes)) //lmao cant place notes when your cursor already overlaps one
+					if (FlxG.mouse.x > gridBG.x
+						&& FlxG.mouse.x < gridBG.x + gridBG.width
+						&& FlxG.mouse.y > gridBG.y
+						&& FlxG.mouse.y < gridBG.y + gridBG.height)
+							if (!FlxG.keys.pressed.CONTROL) //stop crashing
+								addNote(); //allows you to draw notes by holding left click
 
 			if (FlxG.keys.justPressed.TAB)
 			{
@@ -1994,10 +2016,10 @@ class ChartingState extends MusicBeatState
 			playbackSpeed = 1;
 		//
 
-		if (playbackSpeed <= 0.5)
-			playbackSpeed = 0.5;
-		if (playbackSpeed >= 3)
-			playbackSpeed = 3;
+		if (playbackSpeed <= 0.25)
+			playbackSpeed = 0.25;
+		if (playbackSpeed >= 4)
+			playbackSpeed = 4;
 
 		FlxG.sound.music.pitch = playbackSpeed;
 		vocals.pitch = playbackSpeed;
@@ -2196,7 +2218,7 @@ class ChartingState extends MusicBeatState
 		var steps:Int = Math.round(getSectionBeats() * 4);
 		var st:Float = sectionStartTime();
 		var et:Float = st + (Conductor.stepCrochet * steps);
-
+		@:privateAccess {
 		if (FlxG.save.data.chart_waveformInst) {
 			var sound:FlxSound = FlxG.sound.music;
 			if (sound._sound != null && sound._sound.__buffer != null) {
@@ -2229,6 +2251,7 @@ class ChartingState extends MusicBeatState
 					Std.int(gridBG.height)
 				);
 			}
+		}
 		}
 
 		// Draws

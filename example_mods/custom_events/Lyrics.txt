@@ -1,2 +1,0 @@
-Value 1: text
-Value 2: color

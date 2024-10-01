@@ -1,8 +1,0 @@
-Bluebird's camera lock system
-off the camera lock. don't type anything.
-
-<Value1 : ->
--
-
-<Value2 : ->
--

@@ -1,7 +1,0 @@
-Bluebird's camera lock system zoom.
-
-<Value1 : zoom amount>
-type zoom amount here
-
-<Value2 : ->
--
