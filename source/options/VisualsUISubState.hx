@@ -61,7 +61,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'iconBounceType',
 			'string',
 			'Golden Apple',
-			['Golden Apple', 'Dave and Bambi', 'Old Psych', 'New Psych', 'VS Steve']);
+			['Golden Apple', 'Dave and Bambi', 'Old Psych', 'New Psych']);
 		addOption(option);
 
 		var option:Option = new Option('Flashing Lights',
