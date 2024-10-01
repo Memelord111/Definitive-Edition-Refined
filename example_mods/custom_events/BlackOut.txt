@@ -1,3 +1,0 @@
-Blacks out the screen.
-
-Value1 = True/False
