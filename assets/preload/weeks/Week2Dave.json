@@ -1,0 +1,50 @@
+{
+	"storyName": "Dave's Fun Rapping BAttle!",
+	"difficulties": "hard",
+	"hideFreeplay": false,
+	"weekBackground": "dave",
+	"freeplayColor": [
+		0,
+		0,
+		253
+	],
+	"weekBefore": "",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"House",
+			"dave",
+			[
+				0,
+				100,
+				255
+			]
+		],
+		[
+			"insanity",
+			"dave-annoyed",
+			[
+				0,
+				100,
+				255
+			]
+		],
+		[
+			"polygonized",
+			"dave-angey",
+			[
+				140,
+				40,
+				33
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "DaveWeek",
+	"hiddenUntilUnlocked": false
+}
