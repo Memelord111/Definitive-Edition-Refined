@@ -1,32 +1,20 @@
 {
-	"storyName": "Dave's Funkin Class",
-	"difficulties": "hard",
-	"hideFreeplay": false,
-	"weekBackground": "Refresher",
-	"weekBefore": "tutorial",
-	"freeplayColor": [
-		0,
-		0,
-		253
-	],
-	"startUnlocked": true,
-	"hideStoryMode": false,
 	"songs": [
-		[
-			"Warmup",
-			"dave",
-			[
-				0,
-				100,
-				255
-			]
-		]
+		["Tutorial", "gf", [165, 0, 77]]
 	],
+
 	"weekCharacters": [
 		"",
-		"",
-		""
+		"bf",
+		"gf"
 	],
-	"hiddenUntilUnlocked": false,
-	"weekName": "RefresherWeek"
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
 }
