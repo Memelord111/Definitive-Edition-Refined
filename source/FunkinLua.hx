@@ -1375,10 +1375,6 @@ class FunkinLua {
 			PlayState.instance.combo += value;
 			PlayState.instance.RecalculateRating();
 		});
-		Lua_helper.add_callback(lua, "addNPS", function(value:Int = 0) {
-			PlayState.instance.nps += value;
-			PlayState.instance.RecalculateRating();
-		});
 		Lua_helper.add_callback(lua, "setScore", function(value:Int = 0) {
 			PlayState.instance.songScore = value;
 			PlayState.instance.RecalculateRating();
