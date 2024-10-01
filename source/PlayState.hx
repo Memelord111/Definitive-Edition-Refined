@@ -147,10 +147,8 @@ class PlayState extends MusicBeatState
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
-	public static var loops:Int = 0;
-	public static var speedUpType:String = "scroll speed";
 
-	public var spawnTime:Float = 2000;
+	public var spawnTime:Float = 1000;
 
 	public var vocals:FlxSound;
 
@@ -199,8 +197,6 @@ class PlayState extends MusicBeatState
 	public var goods:Int = 0;
 	public var bads:Int = 0;
 	public var shits:Int = 0;
-	public var nps:Int = 0;
-	public var maxNPS:Int = 0;
 
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
@@ -231,7 +227,6 @@ class PlayState extends MusicBeatState
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
 
-	var EngineWatermark:FlxText;
 	var dadbattleBlack:BGSprite;
 	var dadbattleLight:BGSprite;
 	var dadbattleSmokes:FlxSpriteGroup;
@@ -1054,34 +1049,13 @@ class PlayState extends MusicBeatState
 		strumLine.scrollFactor.set();
 
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
-
-		if (ClientPrefs.hudType == 'Psych Engine') {
-			timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-			timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			timeTxt.scrollFactor.set();
-			timeTxt.alpha = 0;
-			timeTxt.borderSize = 2;
-			timeTxt.visible = showTime;
-			if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
-			}
-			if (ClientPrefs.hudType == 'Kade Engine') {
-			timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-			timeTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			timeTxt.scrollFactor.set();
-			timeTxt.alpha = 0;
-			timeTxt.borderSize = 2;
-			timeTxt.visible = showTime;
-			if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
-			}
-			if (ClientPrefs.hudType == 'Dave & Bambi') {
-			timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-			timeTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			timeTxt.scrollFactor.set();
-			timeTxt.alpha = 0;
-			timeTxt.borderSize = 2;
-			timeTxt.visible = showTime;
-			if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
-		}
+		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
+		timeTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.scrollFactor.set();
+		timeTxt.alpha = 0;
+		timeTxt.borderSize = 2;
+		timeTxt.visible = showTime;
+		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
 
 		if(ClientPrefs.timeBarType == 'Song Name')
 		{
@@ -1089,20 +1063,6 @@ class PlayState extends MusicBeatState
 		}
 		updateTime = showTime;
 
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-			'songPercent', 0, 1);
-		timeBar.scrollFactor.set();
-		timeBar.createFilledBar(0xFF2e412e, 0xFF44d844);
-		timeBar.numDivisions = 800; // How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		timeBar.alpha = 0;
-		timeBar.visible = showTime;
-		add(timeBar);
-		add(timeTxt);
-		timeBarBG.sprTracker = timeBar;
-		timeTxt.x += 10;
-		timeTxt.y += 4;
-		}
-		if (ClientPrefs.hudType == 'Psych Engine') {
 		timeBarBG = new AttachedSprite('timeBar');
 		timeBarBG.x = timeTxt.x;
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
@@ -1124,51 +1084,6 @@ class PlayState extends MusicBeatState
 		add(timeBar);
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
-		}
-		if (ClientPrefs.hudType == 'Kade Engine') {
-		timeBarBG = new AttachedSprite('timeBar');
-		timeBarBG.x = timeTxt.x;
-		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
-		timeBarBG.scrollFactor.set();
-		timeBarBG.alpha = 0;
-		timeBarBG.visible = showTime;
-		timeBarBG.color = FlxColor.BLACK;
-		timeBarBG.xAdd = -4;
-		timeBarBG.yAdd = -4;
-		add(timeBarBG);
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-			'songPercent', 0, 1);
-		timeBar.scrollFactor.set();
-		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		timeBar.alpha = 0;
-		timeBar.visible = showTime;
-		add(timeBar);
-		add(timeTxt);
-		timeBarBG.sprTracker = timeBar;
-		}
-		if (ClientPrefs.hudType == 'Dave & Bambi') {
-			timeBarBG = new AttachedSprite('DnBTimeBar');
-			timeBarBG.screenCenter(X);
-			timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
-			timeBarBG.antialiasing = true;
-			timeBarBG.scrollFactor.set();
-			timeBarBG.visible = showTime;
-			timeBarBG.xAdd = -4;
-			timeBarBG.yAdd = -4;
-			add(timeBarBG);
-			
-			timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-				'songPercent', 0, 1);
-			timeBar.scrollFactor.set();
-			timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-			timeBar.alpha = 0;
-			timeBar.visible = showTime;
-			add(timeTxt);
-			timeBarBG.sprTracker = timeBar;
-			timeBar.createFilledBar(FlxColor.GRAY, FlxColor.fromRGB(57, 255, 20));
-			insert(members.indexOf(timeBarBG), timeBar);
-		}
 
 		timePercentTxt = new FlxText(timeBarBG.x + 400, 19, 400, "", 32);
 		timePercentTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1230,7 +1145,6 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
-		if (ClientPrefs.hudType == 'Psych Engine' && ClientPrefs.hudType == 'Kade Engine') {	
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1249,24 +1163,7 @@ class PlayState extends MusicBeatState
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
-	}
-	if (ClientPrefs.hudType == 'Dave & Bambi') {
-	healthBarBG = new AttachedSprite('DnBHealthBar');
-	healthBarBG.y = FlxG.height * 0.89;
-	if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
-	healthBarBG.screenCenter(X);
-	healthBarBG.scrollFactor.set();
-	healthBarBG.antialiasing = true;
-	healthBarBG.xAdd = -4;
-	healthBarBG.yAdd = -4;
-	add(healthBarBG);
-	healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
-		'health', 0, 3);
-	healthBar.visible = !ClientPrefs.hideHud;
-	healthBar.alpha = ClientPrefs.healthBarAlpha;
-	healthBarBG.sprTracker = healthBar;
-	insert(members.indexOf(healthBarBG), healthBar);
-	}
+
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.hideHud;
@@ -1280,43 +1177,6 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-			if (ClientPrefs.hudType == 'Kade Engine') {
-			// Add Engine watermark
-			EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
-			EngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
-			EngineWatermark.scrollFactor.set();
-			add(EngineWatermark);
-			EngineWatermark.text = SONG.song + " " + CoolUtil.difficultyString() + " | PE 0.6.3";
-			}
-			if (ClientPrefs.hudType == 'Dave & Bambi') {
-			// Add Engine watermark
-			EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
-			EngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
-			EngineWatermark.scrollFactor.set();
-			add(EngineWatermark);
-			EngineWatermark.text = SONG.song;
-			}
-			
-			if (ClientPrefs.hudType == 'Kade Engine')
-			{ 		
-			scoreTxt = new FlxText(0, healthBarBG.y + 50, FlxG.width, "", 20);
-			scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
-			scoreTxt.scrollFactor.set();
-			scoreTxt.borderSize = 1;
-			scoreTxt.visible = !ClientPrefs.hideHud;
-			add(scoreTxt);
-			}
-			if (ClientPrefs.hudType == 'Dave & Bambi') 
-			{
-			scoreTxt = new FlxText(0, healthBarBG.y + 40, FlxG.width, "", 20);
-			scoreTxt.setFormat(Paths.font("comic.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			scoreTxt.scrollFactor.set();
-			scoreTxt.borderSize = 1.25;
-			scoreTxt.visible = !ClientPrefs.hideHud;
-			add(scoreTxt);
-			}
-			if (ClientPrefs.hudType == 'Psych Engine') 
-			{
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("comic.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
@@ -1324,37 +1184,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		if (ClientPrefs.hudType == 'Psych Engine')
-			{
-			botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-			botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			botplayTxt.scrollFactor.set();
-			botplayTxt.borderSize = 1.25;
-			botplayTxt.visible = cpuControlled;
-			add(botplayTxt);
-			if (ClientPrefs.downScroll) 
-				botplayTxt.y = timeBarBG.y - 78;
-			}
-			if (ClientPrefs.hudType == 'Kade Engine')
-			{
-			botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-			botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			botplayTxt.scrollFactor.set();
-			botplayTxt.borderSize = 1.25;
-			botplayTxt.visible = cpuControlled;
-			add(botplayTxt);
-			if (ClientPrefs.downScroll) 
-				botplayTxt.y = timeBarBG.y - 78;
-			}
-			if (ClientPrefs.hudType == 'Dave & Bambi')
-			{
-			botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-			botplayTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			botplayTxt.scrollFactor.set();
-			botplayTxt.borderSize = 1.25;
-			botplayTxt.visible = cpuControlled;
-			add(botplayTxt);
-			if (ClientPrefs.downScroll) 
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.scrollFactor.set();
+		botplayTxt.borderSize = 1.25;
+		botplayTxt.visible = cpuControlled;
+		add(botplayTxt);
+		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
@@ -2377,7 +2213,7 @@ class PlayState extends MusicBeatState
 						countdownReady.screenCenter();
 						countdownReady.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -2397,7 +2233,7 @@ class PlayState extends MusicBeatState
 						countdownSet.screenCenter();
 						countdownSet.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -2419,7 +2255,7 @@ class PlayState extends MusicBeatState
 						countdownGo.screenCenter();
 						countdownGo.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownGo);
-						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3222,6 +3058,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		var nps:Int = 0;
+	    var maxNPS:Int = 0;
 		{
 			var balls = notesHitArray.length-1;
 			while (balls >= 0)
@@ -3243,26 +3081,11 @@ class PlayState extends MusicBeatState
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
 
-		if (ClientPrefs.hudType == 'Kade Engine') {
-			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Accuracy: ';
-			if(cpuControlled) 
-				scoreTxt.text = 'Bot Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Botplay Mode';
-			if(ratingName != '?' && !cpuControlled)
-				scoreTxt.text += Highscore.floorDecimal(ratingPercent * 100, 2) + '% | ' + ratingFC + ratingCool;
-			else if (!cpuControlled)
-				scoreTxt.text += '0% | N/A';
-			}
-			if (ClientPrefs.hudType == 'Dave & Bambi') {
-				scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% | ' + ratingFC;
-			if(cpuControlled) 
-				scoreTxt.text = 'Bot Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Botplay Mode';
-			}
-			if (ClientPrefs.hudType == 'Psych Engine') {
-			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Rating: ' + ratingName;
-			if(cpuControlled) 
-				scoreTxt.text = 'Botplay Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Rating: funny botplay mode!!!!!';
-			if(ratingName != '?')
-				scoreTxt.text += ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
+		scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Rating: ' + ratingName;
+		if(cpuControlled) 
+			scoreTxt.text = 'Botplay Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Rating: Botplay Enabled';
+		if(ratingName != '?')
+			scoreTxt.text += ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
 
 		if(botplayTxt.visible) {
 			botplaySine += 180 * elapsed;
@@ -3286,21 +3109,33 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
 		if (ClientPrefs.iconBounceType == 'Old Psych') {
-			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-			}
-			if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
-			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP1.height, 0.9 / playbackRate)));
-			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP2.height, 0.9 / playbackRate)));
-			}
-			if (ClientPrefs.iconBounceType == 'New Psych') {
-			var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-			iconP1.scale.set(mult, mult);
-			iconP1.updateHitbox();
-			var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-			iconP2.scale.set(mult, mult);
-			iconP2.updateHitbox();
-			}
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		}
+		if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
+		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP1.height, 0.9 / playbackRate)));
+		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.9 / playbackRate)),Std.int(FlxMath.lerp(150, iconP2.height, 0.9 / playbackRate)));
+		}
+		if (ClientPrefs.iconBounceType == 'New Psych') {
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP1.scale.set(mult, mult);
+		iconP1.updateHitbox();
+		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP2.scale.set(mult, mult);
+		iconP2.updateHitbox();
+		}
+		if (ClientPrefs.iconBounceType == 'VS Steve') {
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP1.scale.set(mult, mult);
+		iconP1.updateHitbox();
+		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		iconP2.scale.set(mult, mult);
+		iconP2.updateHitbox();
+		}
+		if (ClientPrefs.iconBounceType == 'Golden Apple') {
+		iconP1.centerOffsets();
+		iconP2.centerOffsets();
+		}
 			iconP1.updateHitbox();
 			iconP2.updateHitbox();
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
@@ -3405,9 +3240,6 @@ class PlayState extends MusicBeatState
 		{
 			var time:Float = spawnTime;
 			if(songSpeed < 1) time /= songSpeed;
-			if(songSpeed > 3) time / 2;
-			if(songSpeed > 6) time / 5;
-			if(songSpeed > 9) time / 10;
 			if(unspawnNotes[0].multSpeed < 1) time /= unspawnNotes[0].multSpeed;
 
 			while (unspawnNotes.length > 0 && unspawnNotes[0].strumTime - Conductor.songPosition < time)
@@ -4202,7 +4034,7 @@ class PlayState extends MusicBeatState
 
 		var ret:Dynamic = callOnLuas('onEndSong', [], false);
 		if(ret != FunkinLua.Function_Stop && !transitioning) {
-			if (SONG.validScore && !cpuControlled)
+			if (SONG.validScore)
 			{
 				#if !switch
 				var percent:Float = ratingPercent;
@@ -4336,22 +4168,6 @@ class PlayState extends MusicBeatState
 		eventNotes = [];
 	}
 
-	public static function restartSong(noTrans:Bool = true)
-		{
-			PlayState.instance.paused = true; // For lua
-			FlxG.sound.music.volume = 0;
-			PlayState.instance.vocals.volume = 0;
-			if(noTrans)
-			{
-				FlxTransitionableState.skipNextTransOut = true;
-				FlxG.resetState();
-			}
-			else
-			{
-				MusicBeatState.resetState();
-			}
-		}
-
 	public var totalPlayed:Int = 0;
 	public var totalNotesHit:Float = 0.0;
 
@@ -4412,15 +4228,14 @@ class PlayState extends MusicBeatState
 			spawnNoteSplashOnNote(note);
 		}
 
-		if(!practiceMode) {
+		if(!practiceMode && !cpuControlled) {
 			songScore += score;
 			if(!note.ratingDisabled)
 			{
 				songHits++;
 				totalPlayed++;
-				if(!cpuControlled) {
-					RecalculateRating(false);
-					}
+				RecalculateRating(false);
+			}
 		}
 
 		var pixelShitPart1:String = "";
@@ -5306,10 +5121,10 @@ class PlayState extends MusicBeatState
 		}
 
 		if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
-		var funny:Float = Math.max(Math.min(healthBar.value,1.9),0.01);
+		var funny:Float = (healthBar.percent * 0.01) + 0.01;
 
-		iconP2.setGraphicSize(Std.int(iconP2.width + (50 / funny)),Std.int(iconP2.height - (25 * funny)));
-		iconP1.setGraphicSize(Std.int(iconP1.width + (50 / ((2 - funny) + 0.1))),Std.int(iconP1.height - (25 * ((2 - funny) + 0.1))));
+		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * funny)), Std.int(iconP2.height - (25 * funny)));
+		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * (2 - funny))), Std.int(iconP2.height - (25 * (2 - funny))));
 		}
 		if (ClientPrefs.iconBounceType == 'Old Psych') {
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
@@ -5352,6 +5167,7 @@ class PlayState extends MusicBeatState
 		{
 			gf.dance();
 		}
+		if (curBeat % gfSpeed == 0) {
 		if (curBeat % gfSpeed == 0 && ClientPrefs.iconBounceType == 'Golden Apple') {
 			curBeat % (gfSpeed * 2) == 0 * playbackRate ? {
 			iconP1.scale.set(1.1, 0.8);
@@ -5518,10 +5334,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public var ratingName:String = '?';
-	public var ratingString:String;
 	public var ratingPercent:Float;
 	public var ratingFC:String;
-	public var ratingCool:String;
 	public function RecalculateRating(badHit:Bool = false) {
 		setOnLuas('score', songScore);
 		setOnLuas('misses', songMisses);
@@ -5537,9 +5351,6 @@ class PlayState extends MusicBeatState
 				// Rating Percent
 				ratingPercent = Math.min(1, Math.max(0, totalNotesHit / totalPlayed));
 				//trace((totalNotesHit / totalPlayed) + ', Total: ' + totalPlayed + ', notes hit: ' + totalNotesHit);
-
-				if (Math.isNaN(ratingPercent))
-					ratingString = '?';
 
 				// Rating Name
 				if(ratingPercent >= 1)
@@ -5565,61 +5376,12 @@ class PlayState extends MusicBeatState
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";
 			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
-			if (songMisses >= 10) ratingFC = "Clear";
-			if (songMisses >= 100) ratingFC = "TDSB";
-			if (songMisses >= 1000) ratingFC = "QDSB";
-			if (songMisses >= 100000) ratingFC = "STDCB";
-			else if (songMisses >= 10000000) ratingFC = "SPDCB"; //i have no idea how you'd get a million misses but oh well
-		if (ClientPrefs.hudType == "VS Impostor")
-		{
-			if (sicks > 0) ratingFC = " [SFC]";
-			if (goods > 0) ratingFC = " [GFC]";
-			if (bads > 0) ratingFC = " [BFC]";
-			if (shits > 0) ratingFC = " [FC]";
-			if (songMisses > 0 && songMisses < 10) ratingFC = " [SDCB]";
-			if (songMisses >= 10) ratingFC = " [Clear]";
-			if (songMisses >= 100) ratingFC = " [TDSB]";
-			if (songMisses >= 1000) ratingFC = " [QDSB]";
-			if (songMisses >= 100000) ratingFC = " [STDCB]";
-			else if (songMisses >= 10000000) ratingFC = " [SPDCB]"; //i have no idea how you'd get a million misses but oh well
-		}
-
-			// Rating FC
-			if (ClientPrefs.hudType == 'Kade Engine' && ClientPrefs.hudType == 'Dave & Bambi') {
-				ratingFC = "";
-				if (sicks > 0) ratingFC = "(MFC)";
-				if (goods > 0) ratingFC = "(GFC)";
-				if (bads > 0 || shits > 0) ratingFC = "(FC)";
-				if (songMisses > 0 && songMisses < 10) ratingFC = "(SDCB)";
-				if (songMisses >= 10) ratingFC = "(Clear)";
-				if (songMisses >= 100) ratingFC = "(TDSB)";
-				if (songMisses >= 1000) ratingFC = "(QDSB)";
-				if (songMisses >= 100000) ratingFC = "(STDCB)";
-				else if (songMisses >= 10000000) ratingFC = "(SPDCB)"; //i have no idea how you'd get a million misses but oh well
-				ratingCool = "";
-				if (ratingPercent*100 < 60) ratingCool = " D";
-				if (ratingPercent*100 >= 60) ratingCool = " C";
-				if (ratingPercent*100 >= 70) ratingCool = " B";
-				if (ratingPercent*100 >= 80) ratingCool = " A";
-				if (ratingPercent*100 >= 85) ratingCool = " A.";
-				if (ratingPercent*100 >= 90) ratingCool = " A:";
-				if (ratingPercent*100 >= 93) ratingCool = " AA";
-				if (ratingPercent*100 >= 96.50) ratingCool = " AA.";
-				if (ratingPercent*100 >= 99) ratingCool = " AA:";
-				if (ratingPercent*100 >= 99.70) ratingCool = " AAA";
-				if (ratingPercent*100 >= 99.80) ratingCool = " AAA.";
-				if (ratingPercent*100 >= 99.90) ratingCool = " AAA:";
-				if (ratingPercent*100 >= 99.955) ratingCool = " AAAA";
-				if (ratingPercent*100 >= 99.970) ratingCool = " AAAA.";
-				if (ratingPercent*100 >= 99.980) ratingCool = " AAAA:";
-				if (ratingPercent*100 >= 99.9935) ratingCool = " AAAAA";
-				}
+			else if (songMisses >= 10) ratingFC = "Clear";
 		}
 		updateScore(badHit); // score will only update after rating is calculated, if it's a badHit, it shouldn't bounce -Ghost
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
 		setOnLuas('ratingFC', ratingFC);
-		setOnLuas('ratingCool', ratingCool);
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
