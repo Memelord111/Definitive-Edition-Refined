@@ -147,6 +147,8 @@ class PlayState extends MusicBeatState
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
+	public static var loops:Int = 0;
+	public static var speedUpType:String = "scroll speed";
 
 	public var spawnTime:Float = 2000;
 
@@ -197,6 +199,8 @@ class PlayState extends MusicBeatState
 	public var goods:Int = 0;
 	public var bads:Int = 0;
 	public var shits:Int = 0;
+	public var nps:Int = 0;
+	public var maxNPS:Int = 0;
 
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
@@ -1071,7 +1075,7 @@ class PlayState extends MusicBeatState
 			}
 			if (ClientPrefs.hudType == 'Dave & Bambi') {
 			timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-			timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			timeTxt.setFormat(Paths.font("comic.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			timeTxt.scrollFactor.set();
 			timeTxt.alpha = 0;
 			timeTxt.borderSize = 2;
@@ -1144,26 +1148,26 @@ class PlayState extends MusicBeatState
 		timeBarBG.sprTracker = timeBar;
 		}
 		if (ClientPrefs.hudType == 'Dave & Bambi') {
-		timeBarBG = new AttachedSprite('timeBar');
-		timeBarBG.x = timeTxt.x;
-		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
-		timeBarBG.scrollFactor.set();
-		timeBarBG.alpha = 0;
-		timeBarBG.visible = showTime;
-		timeBarBG.color = FlxColor.BLACK;
-		timeBarBG.xAdd = -4;
-		timeBarBG.yAdd = -4;
-		add(timeBarBG);
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-			'songPercent', 0, 1);
-		timeBar.scrollFactor.set();
-		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
-		timeBar.alpha = 0;
-		timeBar.visible = showTime;
-		add(timeBar);
-		add(timeTxt);
-		timeBarBG.sprTracker = timeBar;
+			timeBarBG = new AttachedSprite('DnBTimeBar');
+			timeBarBG.screenCenter(X);
+			timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
+			timeBarBG.antialiasing = true;
+			timeBarBG.scrollFactor.set();
+			timeBarBG.visible = showTime;
+			timeBarBG.xAdd = -4;
+			timeBarBG.yAdd = -4;
+			add(timeBarBG);
+			
+			timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
+				'songPercent', 0, 1);
+			timeBar.scrollFactor.set();
+			timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+			timeBar.alpha = 0;
+			timeBar.visible = showTime;
+			add(timeTxt);
+			timeBarBG.sprTracker = timeBar;
+			timeBar.createFilledBar(FlxColor.GRAY, FlxColor.fromRGB(57, 255, 20));
+			insert(members.indexOf(timeBarBG), timeBar);
 		}
 
 		timePercentTxt = new FlxText(timeBarBG.x + 400, 19, 400, "", 32);
@@ -1226,6 +1230,7 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
+		if (ClientPrefs.hudType == 'Psych Engine' && ClientPrefs.hudType == 'Kade Engine') {	
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1244,7 +1249,24 @@ class PlayState extends MusicBeatState
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
-
+	}
+	if (ClientPrefs.hudType == 'Dave & Bambi') {
+	healthBarBG = new AttachedSprite('DnBHealthBar');
+	healthBarBG.y = FlxG.height * 0.89;
+	if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
+	healthBarBG.screenCenter(X);
+	healthBarBG.scrollFactor.set();
+	healthBarBG.antialiasing = true;
+	healthBarBG.xAdd = -4;
+	healthBarBG.yAdd = -4;
+	add(healthBarBG);
+	healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
+		'health', 0, 3);
+	healthBar.visible = !ClientPrefs.hideHud;
+	healthBar.alpha = ClientPrefs.healthBarAlpha;
+	healthBarBG.sprTracker = healthBar;
+	insert(members.indexOf(healthBarBG), healthBar);
+	}
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.hideHud;
@@ -2355,7 +2377,7 @@ class PlayState extends MusicBeatState
 						countdownReady.screenCenter();
 						countdownReady.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -2375,7 +2397,7 @@ class PlayState extends MusicBeatState
 						countdownSet.screenCenter();
 						countdownSet.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -2397,7 +2419,7 @@ class PlayState extends MusicBeatState
 						countdownGo.screenCenter();
 						countdownGo.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownGo);
-						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3200,8 +3222,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		var nps:Int = 0;
-	    var maxNPS:Int = 0;
 		{
 			var balls = notesHitArray.length-1;
 			while (balls >= 0)
@@ -3227,13 +3247,13 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Accuracy: ';
 			if(cpuControlled) 
 				scoreTxt.text = 'Bot Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Botplay Mode';
-			if(ratingName != '?')
+			if(ratingName != '?' && !cpuControlled)
 				scoreTxt.text += Highscore.floorDecimal(ratingPercent * 100, 2) + '% | ' + ratingFC + ratingCool;
-				else
+			else if (!cpuControlled)
 				scoreTxt.text += '0% | N/A';
 			}
 			if (ClientPrefs.hudType == 'Dave & Bambi') {
-			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + "%";
+				scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Combo: ' + combo + ' | NPS: ' + nps + ' | Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '% | ' + ratingFC;
 			if(cpuControlled) 
 				scoreTxt.text = 'Bot Score: ' + songScore + ' | Combo: ' + combo + ' | Bot NPS: ' + nps + ' | Botplay Mode';
 			}
@@ -4316,6 +4336,22 @@ class PlayState extends MusicBeatState
 		eventNotes = [];
 	}
 
+	public static function restartSong(noTrans:Bool = true)
+		{
+			PlayState.instance.paused = true; // For lua
+			FlxG.sound.music.volume = 0;
+			PlayState.instance.vocals.volume = 0;
+			if(noTrans)
+			{
+				FlxTransitionableState.skipNextTransOut = true;
+				FlxG.resetState();
+			}
+			else
+			{
+				MusicBeatState.resetState();
+			}
+		}
+
 	public var totalPlayed:Int = 0;
 	public var totalNotesHit:Float = 0.0;
 
@@ -5270,10 +5306,10 @@ class PlayState extends MusicBeatState
 		}
 
 		if (ClientPrefs.iconBounceType == 'Dave and Bambi') {
-		var funny:Float = (healthBar.percent * 0.01) + 0.01;
+		var funny:Float = Math.max(Math.min(healthBar.value,1.9),0.01);
 
-		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * funny)), Std.int(iconP2.height - (25 * funny)));
-		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * (2 - funny))), Std.int(iconP2.height - (25 * (2 - funny))));
+		iconP2.setGraphicSize(Std.int(iconP2.width + (50 / funny)),Std.int(iconP2.height - (25 * funny)));
+		iconP1.setGraphicSize(Std.int(iconP1.width + (50 / ((2 - funny) + 0.1))),Std.int(iconP1.height - (25 * ((2 - funny) + 0.1))));
 		}
 		if (ClientPrefs.iconBounceType == 'Old Psych') {
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
@@ -5482,6 +5518,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var ratingName:String = '?';
+	public var ratingString:String;
 	public var ratingPercent:Float;
 	public var ratingFC:String;
 	public var ratingCool:String;
@@ -5500,6 +5537,9 @@ class PlayState extends MusicBeatState
 				// Rating Percent
 				ratingPercent = Math.min(1, Math.max(0, totalNotesHit / totalPlayed));
 				//trace((totalNotesHit / totalPlayed) + ', Total: ' + totalPlayed + ', notes hit: ' + totalNotesHit);
+
+				if (Math.isNaN(ratingPercent))
+					ratingString = '?';
 
 				// Rating Name
 				if(ratingPercent >= 1)
@@ -5525,16 +5565,37 @@ class PlayState extends MusicBeatState
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";
 			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
-			else if (songMisses >= 10) ratingFC = "Clear";
+			if (songMisses >= 10) ratingFC = "Clear";
+			if (songMisses >= 100) ratingFC = "TDSB";
+			if (songMisses >= 1000) ratingFC = "QDSB";
+			if (songMisses >= 100000) ratingFC = "STDCB";
+			else if (songMisses >= 10000000) ratingFC = "SPDCB"; //i have no idea how you'd get a million misses but oh well
+		if (ClientPrefs.hudType == "VS Impostor")
+		{
+			if (sicks > 0) ratingFC = " [SFC]";
+			if (goods > 0) ratingFC = " [GFC]";
+			if (bads > 0) ratingFC = " [BFC]";
+			if (shits > 0) ratingFC = " [FC]";
+			if (songMisses > 0 && songMisses < 10) ratingFC = " [SDCB]";
+			if (songMisses >= 10) ratingFC = " [Clear]";
+			if (songMisses >= 100) ratingFC = " [TDSB]";
+			if (songMisses >= 1000) ratingFC = " [QDSB]";
+			if (songMisses >= 100000) ratingFC = " [STDCB]";
+			else if (songMisses >= 10000000) ratingFC = " [SPDCB]"; //i have no idea how you'd get a million misses but oh well
+		}
 
 			// Rating FC
-			if (ClientPrefs.hudType == 'Kade Engine') {
+			if (ClientPrefs.hudType == 'Kade Engine' && ClientPrefs.hudType == 'Dave & Bambi') {
 				ratingFC = "";
 				if (sicks > 0) ratingFC = "(MFC)";
 				if (goods > 0) ratingFC = "(GFC)";
 				if (bads > 0 || shits > 0) ratingFC = "(FC)";
 				if (songMisses > 0 && songMisses < 10) ratingFC = "(SDCB)";
-				else if (songMisses >= 10) ratingFC = "(Clear)";
+				if (songMisses >= 10) ratingFC = "(Clear)";
+				if (songMisses >= 100) ratingFC = "(TDSB)";
+				if (songMisses >= 1000) ratingFC = "(QDSB)";
+				if (songMisses >= 100000) ratingFC = "(STDCB)";
+				else if (songMisses >= 10000000) ratingFC = "(SPDCB)"; //i have no idea how you'd get a million misses but oh well
 				ratingCool = "";
 				if (ratingPercent*100 < 60) ratingCool = " D";
 				if (ratingPercent*100 >= 60) ratingCool = " C";
