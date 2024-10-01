@@ -3894,6 +3894,20 @@ class PlayState extends MusicBeatState
 				} else {
 					FunkinLua.setVarInArray(this, value1, value2);
 				}
+
+			case 'Camera Bopping':
+				var _interval:Int = Std.parseInt(value1);
+					if (Math.isNaN(_interval))
+						_interval = 4;
+				var _intensity:Float = Std.parseFloat(value2);
+					if (Math.isNaN(_intensity))
+						_intensity = 1;
+	
+					camBopIntensity = _intensity;
+					camBopInterval = _interval;
+					if (_intensity != 4) usingBopIntervalEvent = true;
+						else usingBopIntervalEvent = false
+
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
