@@ -39,33 +39,6 @@ class MainMenuState extends MusicBeatState
 		'options'
 	];
 
-	public static var bgPaths:Array<String> = 
-[ 
-'backgrounds/Aadsta',
-'backgrounds/ArtiztGmer',
-'backgrounds/DeltaKastel',
-'backgrounds/DeltaKastel2',
-'backgrounds/DeltaKastel3',
-'backgrounds/DeltaKastel4',
-'backgrounds/DeltaKastel5',
-'backgrounds/diamond man',
-'backgrounds/Jukebox',
-'backgrounds/kiazu',
-'backgrounds/Lancey',
-'backgrounds/mamakotomi',
-'backgrounds/mantis',
-'backgrounds/mepperpint',
-'backgrounds/morie',
-'backgrounds/neon',
-'backgrounds/Onuko',
-'backgrounds/ps',
-'backgrounds/ramzgaming',
-'backgrounds/ricee_png',
-'backgrounds/sk0rbias',
-'backgrounds/SwagnotrllyTheMod',
-'backgrounds/zombought'
-];
-
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
@@ -102,12 +75,12 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(randomizeBG());
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
-		bg.updateHitbox();	
-		bg.screenCenter();	
-		bg.antialiasing = true;	
-		bg.color = 0xFFFDE871;	
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		bg.scrollFactor.set(0, yScroll);
+		bg.setGraphicSize(Std.int(bg.width * 1.175));
+		bg.updateHitbox();
+		bg.screenCenter();
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -115,14 +88,15 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		magenta = new FlxSprite(-80).loadGraphic(randomizeBG());
-		magenta.scrollFactor.set();
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+		magenta.scrollFactor.set(0, yScroll);
+		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
 		magenta.visible = false;
-		magenta.antialiasing = true;
+		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
+		add(magenta);
 		
 		// magenta.scrollFactor.set();
 
@@ -328,14 +302,5 @@ class MainMenuState extends MusicBeatState
 				spr.centerOffsets();
 			}
 		});
-	}
-	public static function randomizeBG():flixel.system.FlxAssets.FlxGraphicAsset
-
-	{
-		
-		var chance:Int = FlxG.random.int(0, bgPaths.length - 1);
-		
-		return Paths.image(bgPaths[chance]);
-		
 	}
 }
