@@ -115,7 +115,7 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		magenta = new FlxSprite(-80).loadGraphic(bg.graphic);
+		magenta = new FlxSprite(-80).loadGraphic(randomizeBG());
 		magenta.scrollFactor.set();
 		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
 		magenta.updateHitbox();
